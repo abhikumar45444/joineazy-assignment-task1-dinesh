@@ -1,6 +1,7 @@
 import './App.css'
 import { useState, useEffect } from 'react'
 import { USERS, ASSIGNMENTS, assignmentsKey, currentUserKey} from './data/seedData'
+import LoginView from './views/LoginView';
 
 function App() {
   const [users, setUsers] = useState(USERS);
@@ -32,13 +33,7 @@ function App() {
   return (
     <>
       <div className='h-dvh'>
-        <h1 className='text-center'>Home Page</h1>
-        <div className='flex flex-col w-full p-76'>
-          <h3 className='items-center text-center'>Total users count: {users.length}</h3>
-          <h3 className='items-center text-center'>Total assignments count: {assignments.length}</h3>
-          <button className='bg-amber-500 w-36 mt-10 mb-10 p-2 cursor-pointer m-auto rounded' onClick={() => setCurrentUser(users[0])}>Log in as user 1</button>
-          {currentUser !== null && <p className='text-center'>logged in!!</p>}
-        </div>
+        <LoginView users={users} onSelectUser={setCurrentUser} />
       </div>
     </>
   )
